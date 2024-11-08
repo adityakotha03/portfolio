@@ -24,7 +24,7 @@ const Projects: React.FC = () => {
     {
       title: "F1nsight",
       description: "An open-source platform providing in-depth analysis and interactive visualization of Formula 1 race data, including telemetry, AR models, and more.",
-      image: '/assets/animation-grid_1.gif',
+      image: import.meta.env.BASE_URL + '/assets/animation-grid_1.gif',
       techStack: ["React", "Recharts", "Tailwind", "Three.js"],
       stats: { users: "200+", stars: 13 },
       workflow: [
