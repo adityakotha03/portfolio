@@ -20,7 +20,7 @@ const Projects: React.FC = () => {
     {
       title: "F1nsight",
       description: "An open-source platform providing in-depth analysis and interactive visualization of Formula 1 race data, including telemetry, AR models, and more.",
-      image: "/portfolio/assets/F1nsightMeta.jpg",
+      image: "/assets/F1nsightMeta.jpg",
       techStack: ["React", "Recharts", "Tailwind", "Three.js"],
       stats: { users: "3k+", stars: 24 },
       slug: "f1nsight"

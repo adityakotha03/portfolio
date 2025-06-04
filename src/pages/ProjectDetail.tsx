@@ -34,7 +34,7 @@ const ProjectDetail: React.FC = () => {
     'f1nsight': {
       title: "F1nsight",
       description: "An open-source platform providing in-depth analysis and interactive visualization of Formula 1 race data",
-      image: "/portfolio/assets/F1nsightMeta.jpg",
+      image: "/assets/F1nsightMeta.jpg",
       techStack: ["React", "Recharts", "Tailwind", "Three.js"],
       stats: { users: "3K+", stars: 24 },
       publishDate: "November 2024",
@@ -86,7 +86,6 @@ const ProjectDetail: React.FC = () => {
       <NavBar isMenuOpen={false} setIsMenuOpen={() => {}} />
       
       <article className="max-w-4xl mx-auto px-6 pt-32 pb-20">
-        {/* Back button */}
         <Link 
           to="/" 
           className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-8"

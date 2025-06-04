@@ -76,7 +76,7 @@ const Hero = () => {
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-4 items-center mt-12 mb-8">
           <a
-            href="assets/resume.pdf"
+            href="/assets/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 font-medium shadow-sm"
