@@ -27,23 +27,22 @@ const Blog: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-900 text-gray-100">
-      {/* Provide dummy functions for NavBar's required props */}
+    <div className="min-h-screen bg-white">
       <NavBar isMenuOpen={false} setIsMenuOpen={() => {}} />
-      <main className="max-w-4xl mx-auto p-6 space-y-8">
-        <h1 className="text-3xl font-bold text-sky-400">Blog</h1>
-        <div className="grid gap-8">
+      <main className="max-w-4xl mx-auto px-6 pt-32 pb-20">
+        <h1 className="text-4xl font-light text-gray-900 mb-12 border-b border-gray-200 pb-4">Blog</h1>
+        <div className="space-y-8">
           {blogPosts.map((post, index) => (
-            <div key={index} className="bg-slate-800 p-4 rounded-lg">
+            <article key={index} className="hover:bg-gray-50 p-6 rounded-lg transition-colors">
               <img
                 src={post.image}
                 alt={post.title}
-                className="w-full h-40 object-cover rounded-md mb-4"
+                className="w-full h-48 object-cover rounded-lg mb-4"
               />
-              <h2 className="text-2xl font-semibold text-sky-400">{post.title}</h2>
-              <p className="text-slate-300 mt-2">{post.summary}</p>
-              <button className="mt-4 text-sky-400 hover:text-sky-300">Read more</button>
-            </div>
+              <h2 className="text-xl font-medium text-gray-900 mb-2">{post.title}</h2>
+              <p className="text-gray-600 leading-relaxed font-light mb-4">{post.summary}</p>
+              <button className="text-gray-600 hover:text-gray-900 font-medium transition-colors">Read more</button>
+            </article>
           ))}
         </div>
       </main>

@@ -30,10 +30,10 @@ const NavBar: React.FC<NavBarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
-      <div className="max-w-7xl mx-auto px-6">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
+      <div className="max-w-5xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-2xl font-bold text-white hover:text-sky-400 transition-colors">
+          <Link to="/" className="text-xl font-medium text-gray-900 hover:text-gray-600 transition-colors">
             Aditya Kotha
           </Link>
 
@@ -44,7 +44,7 @@ const NavBar: React.FC<NavBarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
                 <button
                   key={item.label}
                   onClick={() => handleScroll(item.sectionId)}
-                  className="text-slate-300 hover:text-sky-400 transition-colors"
+                  className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
                 >
                   {item.label}
                 </button>
@@ -52,7 +52,7 @@ const NavBar: React.FC<NavBarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
                 <Link
                   key={item.label}
                   to={item.pageLink}
-                  className="text-slate-300 hover:text-sky-400 transition-colors"
+                  className="text-gray-600 hover:text-gray-900 transition-colors font-medium"
                 >
                   {item.label}
                 </Link>
@@ -62,7 +62,7 @@ const NavBar: React.FC<NavBarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-slate-300 hover:text-sky-400 transition-colors"
+            className="md:hidden text-gray-600 hover:text-gray-900 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -72,14 +72,14 @@ const NavBar: React.FC<NavBarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-slate-900/95 backdrop-blur-md">
+        <div className="md:hidden bg-white/95 backdrop-blur-md border-b border-gray-200">
           <div className="px-4 pt-2 pb-4 space-y-2">
             {navItems.map((item) => (
               item.sectionId && isHomePage ? (
                 <button
                   key={item.label}
                   onClick={() => handleScroll(item.sectionId)}
-                  className="block px-3 py-2 text-slate-300 hover:text-sky-400 transition-colors"
+                  className="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors font-medium"
                 >
                   {item.label}
                 </button>
@@ -87,7 +87,7 @@ const NavBar: React.FC<NavBarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
                 <Link
                   key={item.label}
                   to={item.pageLink}
-                  className="block px-3 py-2 text-slate-300 hover:text-sky-400 transition-colors"
+                  className="block px-3 py-2 text-gray-600 hover:text-gray-900 transition-colors font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}

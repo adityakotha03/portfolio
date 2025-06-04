@@ -7,12 +7,14 @@ import Publications from './components/sections/Publications';
 import Projects from './components/sections/Projects';
 import Footer from './components/Footer';
 import Blog from './pages/Blog';
+import ProjectDetail from './pages/ProjectDetail';
+
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <Router>
-      <div className="min-h-screen bg-slate-900 text-gray-100">
+      <div className="min-h-screen bg-white text-gray-900">
         <Routes>
           <Route
             path="/"
@@ -29,7 +31,8 @@ function App() {
               </>
             }
           />
-          <Route path="/blog" element={<Blog />} /> {/* Blog Route */}
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
         </Routes>
       </div>
     </Router>

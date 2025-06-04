@@ -1,148 +1,108 @@
-import { Github, Linkedin, GraduationCap } from 'lucide-react';
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, TooltipProps } from 'recharts';
-
-interface JourneyDataPoint {
-  date: string;
-  experience: number;
-  event: string;
-}
-
-interface CustomTooltipProps extends TooltipProps<number, string> {
-  active?: boolean;
-  payload?: Array<{
-    payload: JourneyDataPoint;
-    value: number;
-  }>;
-  label?: string;
-}
+import { Github, Linkedin, GraduationCap, Download, Mail, MapPin } from 'lucide-react';
 
 const Hero = () => {
   const socialLinks = [
     {
-      icon: <Github size={24} />,
+      icon: <Github size={20} />,
       href: "https://github.com/adityakotha03",
       label: "GitHub Profile"
     },
     {
-      icon: <Linkedin size={24} />,
-      href: "https://in.linkedin.com/in/aditya-kotha-59a010241",
+      icon: <Linkedin size={20} />,
+      href: "https://www.linkedin.com/in/aditya-kotha-59a010241/",
       label: "LinkedIn Profile"
     },
     {
-      icon: <GraduationCap size={24} />,
+      icon: <GraduationCap size={20} />,
       href: "https://scholar.google.com/citations?user=k3EuaTgAAAAJ&hl=en",
       label: "Google Scholar Profile"
     }
   ];
 
-  const journeyData: JourneyDataPoint[] = [
-    {
-      date: '2020',
-      experience: 10,
-      event: "Started Computer Science Bachelors at IIIT NR"
-    },
-    {
-      date: 'Aug 2022',
-      experience: 40,
-      event: "Joined Siemens as Technical Intern"
-    },
-    {
-      date: 'Oct 2022',
-      experience: 50,
-      event: "First Journal Publication - DNSguard in IEEE"
-    },
-    {
-      date: 'May 2023',
-      experience: 65,
-      event: "Selected for MITACs from 27,000 applicants"
-    },
-    {
-      date: 'Aug 2023',
-      experience: 75,
-      event: "Published in Journal of Ambient Intelligence"
-    },
-    {
-      date: 'Oct 2023',
-      experience: 85,
-      event: "Published Computer Vision research at OITS Conference"
-    },
-    {
-      date: 'Feb 2024',
-      experience: 95,
-      event: "Research Intern at Cornell University"
-    }
-  ];
-
-  const CustomTooltip = ({ active, payload, label }: CustomTooltipProps) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="bg-slate-800 p-4 rounded-lg shadow-lg border border-sky-500/20">
-          <p className="text-sky-400 font-medium">{label}</p>
-          <p className="text-slate-300">{payload[0].payload.event}</p>
-        </div>
-      );
-    }
-    return null;
-  };
-
   return (
-    <section id="about" className="pt-32 pb-20 px-6 md:px-20 bg-gradient-to-b from-slate-800 to-slate-900">
+    <section id="about" className="pt-32 pb-20 px-6 bg-white">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-8">
-          Aditya Kotha
+        <h1 className="text-5xl md:text-7xl font-light text-gray-900 mb-8 tracking-tighter">
+          Hello, I'm Aditya.
         </h1>
-        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed">
-          I'm Aditya Kotha, a graduate from IIIT NR with a CS degree. I'm a dreamer with big aspirations, 
-          always pushing the boundaries of what's possible in the world of technology and AI.
-        </p>
-        <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mt-4">
-          While my path isn't always linear, each experience – whether a success or a setback – 
-          contributes to my overall upward trajectory.
-        </p>
+        
+        {/* Location and Contact Info */}
+        <div className="flex flex-wrap items-center gap-6 mb-12 text-gray-600">
+          <div className="flex items-center gap-2">
+            <MapPin size={18} className="text-blue-600" />
+            <span className="font-medium">Los Angeles, California</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Mail size={18} className="text-gray-500" />
+            <a href="mailto:kothaa@usc.edu" className="hover:text-gray-900 transition-colors">
+              kothaa@usc.edu
+            </a>
+          </div>
+        </div>
+        
+        <div className="space-y-10">
+          {/* Who am I? Section */}
+          <div>
+            <h2 className="text-2xl font-light text-gray-900 mb-6 tracking-tight border-b border-gray-200 pb-3">
+              Who am I?
+            </h2>
+            <div className="space-y-5 text-lg md:text-xl text-gray-700 leading-relaxed">
+              <p className="font-light">
+                I'm a builder with a passion for <strong className="font-semibold text-gray-900">Artificial Intelligence</strong> and <strong className="font-semibold text-gray-900">Machine Learning</strong>. 
+                Currently pursuing my <strong className="font-semibold text-gray-900">Masters in Computer Science (AI)</strong> at <strong className="font-semibold text-gray-900">USC</strong> in <strong className="font-semibold text-blue-600">Los Angeles, California</strong>.
+              </p>
+            </div>
+          </div>
 
-        <div className="mt-8 h-64 w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={journeyData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
-              <XAxis 
-                dataKey="date" 
-                stroke="#94a3b8"
-                tick={{ fill: '#94a3b8' }}
-              />
-              <YAxis 
-                stroke="#94a3b8"
-                tick={false}
-                label={{ 
-                  value: 'Experience', 
-                  angle: -90, 
-                  position: 'insideLeft',
-                  fill: '#94a3b8'
-                }}
-              />
-              <Tooltip content={<CustomTooltip />} />
-              <Line 
-                type="monotone" 
-                dataKey="experience" 
-                stroke="#38bdf8" 
-                strokeWidth={2}
-                dot={{ 
-                  stroke: '#38bdf8',
-                  strokeWidth: 2,
-                  r: 4,
-                  fill: '#1e293b'
-                }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+          {/* About */}
+          <div>
+            <h2 className="text-2xl font-light text-gray-900 mb-6 tracking-tight border-b border-gray-200 pb-3">
+              About
+            </h2>
+            <div className="space-y-5 text-gray-700 leading-relaxed font-light">
+              <p>
+                Hey, I'm Aditya. I'm passionate about pushing the boundaries of AI through research and hands-on projects. 
+                My work has been published in <strong className="font-semibold text-gray-900">IEEE journals</strong> and I love building innovative solutions 
+                that can make a real-world impact.
+              </p>
+              <p>
+                I'm currently working on <a href="https://www.f1nsight.com/" target="_blank" rel="noopener noreferrer" className="font-semibold text-blue-600 hover:text-blue-800 underline transition-colors">F1nsight</a> as a side project. When I'm not coding or researching, I enjoy exploring LA, 
+                staying up-to-date with the latest in AI, and working on new ideas that push technological boundaries.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="flex gap-6 mt-8">
+        {/* Action Buttons */}
+        <div className="flex flex-wrap gap-4 items-center mt-12 mb-8">
+          <a
+            href="assets/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 font-medium shadow-sm"
+          >
+            <Download size={18} />
+            Download Resume
+          </a>
+          
+          <a
+            href="mailto:kothaa@usc.edu"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-200 font-medium"
+          >
+            <Mail size={18} />
+            Get In Touch
+          </a>
+        </div>
+
+        {/* Social Links */}
+        <div className="flex gap-6">
           {socialLinks.map((link, index) => (
             <a
               key={index}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-sky-400 transition-colors"
+              className="text-gray-500 hover:text-gray-900 transition-colors duration-200"
               aria-label={link.label}
             >
               {link.icon}

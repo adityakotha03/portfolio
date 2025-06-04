@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Section from '../Section';
-import ProjectCard from '../ProjectCard';
+import { ArrowRight } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -11,12 +12,7 @@ interface Project {
     users?: string;
     stars?: number;
   };
-  workflow?: string[];
-  problemStatement?: string;
-  features?: string[];
-  futurePlans?: string[];
-  githubUrl?: string;
-  demoUrl?: string;
+  slug: string; // Added for routing
 }
 
 const Projects: React.FC = () => {
@@ -24,41 +20,54 @@ const Projects: React.FC = () => {
     {
       title: "F1nsight",
       description: "An open-source platform providing in-depth analysis and interactive visualization of Formula 1 race data, including telemetry, AR models, and more.",
-      image: import.meta.env.BASE_URL + '/assets/animation-grid_1.gif',
+      image: "/portfolio/assets/F1nsightMeta.jpg",
       techStack: ["React", "Recharts", "Tailwind", "Three.js"],
-      stats: { users: "200+", stars: 13 },
-      workflow: [
-        "Connect to multiple F1 telemetry and data APIs for live data",
-        "Data preprocessing to enhance accuracy and visualization",
-        "Create interactive visualizations with Recharts and Three.js",
-        "Design real-time data display and telemetry insights",
-        "Integrate AR support for select 3D F1 car models",
-        "Implement continuous deployment for seamless updates"
-      ],
-      problemStatement: "F1 fans lack a unified, comprehensive tool that provides all race insights in one place. With multiple sources offering only partial data, fans struggle to access historical comparisons, live telemetry, and in-depth race metrics, especially with real-time and immersive views. F1nsight addresses this by centralizing data, adding advanced visualizations, and making these insights accessible in an interactive format.",
-      features: [
-        "Detailed Leaderboards: Comprehensive rankings and statistics for each race.",
-        "Lap Times Analysis: Performance metrics to study consistency and strategy.",
-        "Tire Strategies: Analysis of tire choices and their impact on race outcomes.",
-        "Fastest Laps: Identification of drivers' fastest laps in each event.",
-        "Interactive Telemetry Viewer: Real-time driver telemetry with various camera angles.",
-        "AR Models: Augmented reality views of select F1 cars."
-      ],
-      futurePlans: [
-        "Expanded AR Visualization with additional car models and immersive AR.",
-        "Prediction Tools: Real-time race prediction features.",
-        "Broader Car Models Library: AR models for a wide array of historical F1 cars."
-      ],
-      githubUrl: "https://github.com/adityakotha03/F1nsight",
-      demoUrl: "https://www.f1nsight.com"
+      stats: { users: "3k+", stars: 24 },
+      slug: "f1nsight"
     }
   ];
 
   return (
-    <Section id="projects" title="Projects">
-      <div className="grid md:grid-cols-2 gap-8">
+    <Section id="projects" title="Personal Projects">
+      <div className="space-y-8">
         {projects.map((project, index) => (
-          <ProjectCard key={index} {...project} />
+          <div key={index} className="group">
+            <div className="flex flex-col md:flex-row gap-6 p-6 hover:bg-gray-50 rounded-lg transition-colors">
+              <div className="md:w-1/3">
+                <div className="aspect-video w-full overflow-hidden rounded-lg bg-gray-100">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </div>
+              <div className="md:w-2/3">
+                <h3 className="text-xl font-medium text-gray-900 mb-2">{project.title}</h3>
+                <p className="text-gray-600 leading-relaxed font-light mb-4">{project.description}</p>
+                
+                {project.techStack && (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.techStack.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm font-medium"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                
+                <Link
+                  to={`/projects/${project.slug}`}
+                  className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors font-medium"
+                >
+                  Read more <ArrowRight size={16} />
+                </Link>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </Section>
